@@ -106,8 +106,8 @@ const AboutPage: React.FC = () => {
           <div className="mb-10 text-center">
               <div className="mb-4 rounded-full overflow-hidden w-48 h-48 mx-auto">
                 <img 
-                  src="src/assets/images/aida.jpeg" 
-                  alt="Sofia Rodriguez" 
+                  src="https://i.postimg.cc/Vv33520d/aida.jpg" 
+                  alt="Aida ben Ibrahim" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -120,8 +120,8 @@ const AboutPage: React.FC = () => {
             <div className="text-center">
               <div className="mb-4 rounded-full overflow-hidden w-48 h-48 mx-auto">
                 <img 
-                  src="src/assets/images/maha.jpeg" 
-                  alt="Michael Chen" 
+                  src="https://i.postimg.cc/QM0wcFWL/maha.jpg" 
+                  alt="Maha ben hassine" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -135,8 +135,8 @@ const AboutPage: React.FC = () => {
             <div className="text-center">
               <div className="mb-4 rounded-full overflow-hidden w-48 h-48 mx-auto">
                 <img 
-                  src="src/assets/images/isra.jpeg" 
-                  alt="Aisha Johnson" 
+                  src="https://i.postimg.cc/QdgRx48d/isra.jpg" 
+                  alt="Isra ben hammed" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -150,8 +150,8 @@ const AboutPage: React.FC = () => {
             <div className="text-center">
               <div className="mb-4 rounded-full overflow-hidden w-48 h-48 mx-auto">
                 <img 
-                  src="src/assets/images/rania.jpeg" 
-                  alt="David Kim" 
+                  src="https://i.postimg.cc/Qtzznvb0/rania.jpg" 
+                  alt="Rania khemiri" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -165,8 +165,8 @@ const AboutPage: React.FC = () => {
             <div className="text-center">
               <div className="mb-4 rounded-full overflow-hidden w-48 h-48 mx-auto">
                 <img 
-                  src="src/assets/images/wafa.jpeg" 
-                  alt="David Kim" 
+                  src="https://i.postimg.cc/mhf5TMK9/wafa.jpg" 
+                  alt="Wafa beltaief" 
                   className="w-full h-full object-cover"
                 />
               </div>

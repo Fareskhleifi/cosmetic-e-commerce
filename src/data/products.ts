@@ -40,8 +40,8 @@ export const products: Product[] = [
     price: 44.99,
     description: "Powerful 15% vitamin C serum that brightens skin tone, reduces dark spots, and boosts collagen production.",
     images: [
-      "/src/assets/images/vc.jpeg",
-      "/src/assets/images/vc2.jpeg"
+      "https://i.postimg.cc/prnSNkcx/vc.jpg",
+      "https://i.postimg.cc/j529cRzD/vc2.avif"
     ],
     category: "face",
     newArrival: true,
@@ -56,8 +56,8 @@ export const products: Product[] = [
     price: 24.99,
     description: "Sulfate-free foaming cleanser that effectively removes makeup and impurities without stripping skin's natural moisture.",
     images: [
-      "/src/assets/images/clns.jpeg",
-      "/src/assets/images/clns2.jpeg"
+      "https://i.postimg.cc/qRZfHNkc/clns.webp",
+      "https://i.postimg.cc/Rh3kSvFk/clns2.jpg"
     ],
     category: "cleansers",
     bestSeller: true,
@@ -103,8 +103,8 @@ export const products: Product[] = [
     price: 22.99,
     description: "Alcohol-free rose water toner that hydrates, soothes, and preps skin for better absorption of serums and moisturizers.",
     images: [
-      "/src/assets/images/fresh.jpeg",
-      "/src/assets/images/fresh2.jpeg"
+      "https://i.postimg.cc/SNMBHQH8/fresh.webp",
+      "https://i.postimg.cc/YCB57KwP/fresh2.webp"
     ],
     category: "face",
     newArrival: true,
@@ -119,8 +119,8 @@ export const products: Product[] = [
     price: 34.99,
     description: "Aromatic bath oil with lavender and chamomile essential oils for a relaxing, spa-like bathing experience.",
     images: [
-      "/src/assets/images/both-oil.jpeg",
-      "/src/assets/images/bath-oil-product.jpeg"
+      "https://i.postimg.cc/vmQC1rTL/both-oil.webp",
+      "https://i.postimg.cc/DZzVNrKy/bath-oil-product.jpg"
     ],
     category: "bath",
     featured: true,

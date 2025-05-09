@@ -16,13 +16,13 @@ export const categories: Category[] = [
   {
     id: 3,
     name: "Cleansers",
-    image: "/src/assets/images/clns3.jpeg",
+    image: "https://i.postimg.cc/WpCR9qYT/clns3.jpg",
     description: "Gentle yet effective cleansers for all skin concerns"
   },
   {
     id: 4,
     name: "Bath",
-    image: "/src/assets/images/both-oil.jpeg",
+    image: "https://i.postimg.cc/vmQC1rTL/both-oil.webp",
     description: "Transform your bath routine into a spa experience"
   }
 ];

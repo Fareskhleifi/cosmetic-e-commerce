@@ -24,12 +24,12 @@ const CheckoutPage: React.FC = () => {
   const [orderPlaced, setOrderPlaced] = useState(false);
   
   useEffect(() => {
-    document.title = 'Checkout - LUXEBEAUTY';
+    document.title = 'Paiement - LUXEBEAUTY';
     window.scrollTo(0, 0);
     
-    // Redirect to cart if cart is empty
+    // Rediriger vers le panier si le panier est vide
     if (items.length === 0 && !orderPlaced) {
-      window.location.href = '/cart';
+      window.location.href = '/panier';
     }
   }, [items, orderPlaced]);
   
@@ -40,7 +40,7 @@ const CheckoutPage: React.FC = () => {
       [name]: value
     });
     
-    // Clear error when field is changed
+    // Effacer l'erreur lorsque le champ est modifié
     if (formErrors[name]) {
       setFormErrors({
         ...formErrors,
@@ -52,37 +52,37 @@ const CheckoutPage: React.FC = () => {
   const validateForm = () => {
     const errors: Record<string, string> = {};
     
-    // Basic validations
-    if (!formData.firstName) errors.firstName = 'First name is required';
-    if (!formData.lastName) errors.lastName = 'Last name is required';
+    // Validations de base
+    if (!formData.firstName) errors.firstName = 'Le prénom est requis';
+    if (!formData.lastName) errors.lastName = 'Le nom de famille est requis';
     if (!formData.email) {
-      errors.email = 'Email is required';
+      errors.email = 'L\'email est requis';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = 'Email is invalid';
+      errors.email = 'L\'email est invalide';
     }
-    if (!formData.phone) errors.phone = 'Phone number is required';
-    if (!formData.address) errors.address = 'Address is required';
-    if (!formData.city) errors.city = 'City is required';
-    if (!formData.state) errors.state = 'State is required';
-    if (!formData.zip) errors.zip = 'ZIP code is required';
+    if (!formData.phone) errors.phone = 'Le numéro de téléphone est requis';
+    if (!formData.address) errors.address = 'L\'adresse est requise';
+    if (!formData.city) errors.city = 'La ville est requise';
+    if (!formData.state) errors.state = 'L\'état/province est requis';
+    if (!formData.zip) errors.zip = 'Le code postal est requis';
     
-    // Payment validations
+    // Validations de paiement
     if (formData.paymentMethod === 'credit-card') {
-      if (!formData.cardName) errors.cardName = 'Name on card is required';
+      if (!formData.cardName) errors.cardName = 'Le nom sur la carte est requis';
       if (!formData.cardNumber) {
-        errors.cardNumber = 'Card number is required';
+        errors.cardNumber = 'Le numéro de carte est requis';
       } else if (!/^\d{16}$/.test(formData.cardNumber.replace(/\s/g, ''))) {
-        errors.cardNumber = 'Card number is invalid';
+        errors.cardNumber = 'Le numéro de carte est invalide';
       }
       if (!formData.expiryDate) {
-        errors.expiryDate = 'Expiry date is required';
+        errors.expiryDate = 'La date d\'expiration est requise';
       } else if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(formData.expiryDate)) {
-        errors.expiryDate = 'Format should be MM/YY';
+        errors.expiryDate = 'Le format doit être MM/AA';
       }
       if (!formData.cvv) {
-        errors.cvv = 'CVV is required';
+        errors.cvv = 'Le CVV est requis';
       } else if (!/^\d{3,4}$/.test(formData.cvv)) {
-        errors.cvv = 'CVV is invalid';
+        errors.cvv = 'Le CVV est invalide';
       }
     }
     
@@ -94,7 +94,7 @@ const CheckoutPage: React.FC = () => {
     e.preventDefault();
     
     if (validateForm()) {
-      // Simulate order processing
+      // Simuler le traitement de la commande
       setTimeout(() => {
         setOrderPlaced(true);
         clearCart();
@@ -112,15 +112,15 @@ const CheckoutPage: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h1 className="text-2xl font-serif mb-4">Order Successful!</h1>
+            <h1 className="text-2xl font-serif mb-4">Commande réussie !</h1>
             <p className="text-gray-600 mb-6">
-              Thank you for your order. We've received your payment and will process your order shortly.
+              Merci pour votre commande. Nous avons reçu votre paiement et traiterons votre commande sous peu.
             </p>
             <Link 
               to="/" 
               className="bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors inline-block"
             >
-              Return to Home
+              Retour à l'accueil
             </Link>
           </div>
         </div>
@@ -131,20 +131,20 @@ const CheckoutPage: React.FC = () => {
   return (
     <div className="mt-16 pt-12 pb-16">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-serif mb-8 text-center">Checkout</h1>
+        <h1 className="text-3xl font-serif mb-8 text-center">Paiement</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Checkout Form */}
+          {/* Formulaire de paiement */}
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit}>
-              {/* Customer Information */}
+              {/* Informations du client */}
               <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-                <h2 className="text-xl font-serif mb-4">Customer Information</h2>
+                <h2 className="text-xl font-serif mb-4">Informations du client</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      First Name*
+                      Prénom*
                     </label>
                     <input 
                       type="text" 
@@ -159,7 +159,7 @@ const CheckoutPage: React.FC = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Last Name*
+                      Nom de famille*
                     </label>
                     <input 
                       type="text" 
@@ -177,7 +177,7 @@ const CheckoutPage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Email Address*
+                      Adresse e-mail*
                     </label>
                     <input 
                       type="email" 
@@ -192,7 +192,7 @@ const CheckoutPage: React.FC = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Phone Number*
+                      Numéro de téléphone*
                     </label>
                     <input 
                       type="tel" 
@@ -208,13 +208,13 @@ const CheckoutPage: React.FC = () => {
                 </div>
               </div>
               
-              {/* Shipping Address */}
+              {/* Adresse de livraison */}
               <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-                <h2 className="text-xl font-serif mb-4">Shipping Address</h2>
+                <h2 className="text-xl font-serif mb-4">Adresse de livraison</h2>
                 
                 <div className="mb-4">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Street Address*
+                    Adresse*
                   </label>
                   <input 
                     type="text" 
@@ -231,7 +231,7 @@ const CheckoutPage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      City*
+                      Ville*
                     </label>
                     <input 
                       type="text" 
@@ -246,7 +246,7 @@ const CheckoutPage: React.FC = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      State/Province*
+                      État/Province*
                     </label>
                     <input 
                       type="text" 
@@ -264,7 +264,7 @@ const CheckoutPage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      ZIP/Postal Code*
+                      Code postal*
                     </label>
                     <input 
                       type="text" 
@@ -279,7 +279,7 @@ const CheckoutPage: React.FC = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Country*
+                      Pays*
                     </label>
                     <select 
                       name="country"
@@ -287,19 +287,19 @@ const CheckoutPage: React.FC = () => {
                       onChange={handleChange}
                       className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300"
                     >
-                      <option value="US">Tunisia</option>
-                      <option value="US">United States</option>
+                      <option value="TN">Tunisie</option>
+                      <option value="US">États-Unis</option>
                       <option value="CA">Canada</option>
-                      <option value="UK">United Kingdom</option>
-                      <option value="AU">Australia</option>
+                      <option value="UK">Royaume-Uni</option>
+                      <option value="AU">Australie</option>
                     </select>
                   </div>
                 </div>
               </div>
               
-              {/* Payment Information */}
+              {/* Informations de paiement */}
               <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-                <h2 className="text-xl font-serif mb-4">Payment Method</h2>
+                <h2 className="text-xl font-serif mb-4">Méthode de paiement</h2>
                 
                 <div className="mb-4">
                   <div className="flex items-center space-x-4">
@@ -312,7 +312,7 @@ const CheckoutPage: React.FC = () => {
                         onChange={handleChange}
                         className="mr-2"
                       />
-                      Credit Card
+                      Carte de crédit
                     </label>
                     <label className="flex items-center">
                       <input 
@@ -323,7 +323,7 @@ const CheckoutPage: React.FC = () => {
                         onChange={handleChange}
                         className="mr-2"
                       />
-                      Face to Face
+                      En personne
                     </label>
                   </div>
                 </div>
@@ -332,7 +332,7 @@ const CheckoutPage: React.FC = () => {
                   <div>
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Name on Card*
+                        Nom sur la carte*
                       </label>
                       <input 
                         type="text" 
@@ -348,7 +348,7 @@ const CheckoutPage: React.FC = () => {
                     
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Card Number*
+                        Numéro de carte*
                       </label>
                       <input 
                         type="text" 
@@ -366,14 +366,14 @@ const CheckoutPage: React.FC = () => {
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Expiry Date*
+                          Date d'expiration*
                         </label>
                         <input 
                           type="text" 
                           name="expiryDate"
                           value={formData.expiryDate}
                           onChange={handleChange}
-                          placeholder="MM/YY"
+                          placeholder="MM/AA"
                           className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.expiryDate ? 'border-red-500' : 'border-gray-300'}`}
                         />
                         {formErrors.expiryDate && (
@@ -402,7 +402,7 @@ const CheckoutPage: React.FC = () => {
                 
                 {formData.paymentMethod === 'face-to-face' && (
                   <p className="text-gray-600">
-                    You will pay in person at delivery. Our representative will contact you to arrange a convenient meeting time.
+                    Vous paierez en personne à la livraison. Notre représentant vous contactera pour organiser un rendez-vous pratique.
                   </p>
                 )}
               </div>
@@ -412,18 +412,18 @@ const CheckoutPage: React.FC = () => {
                   type="submit" 
                   className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700 transition-colors"
                 >
-                  Place Order
+                  Passer la commande
                 </button>
               </div>
             </form>
           </div>
           
-          {/* Order Summary */}
+          {/* Résumé de la commande */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-sm p-6 sticky top-24">
-              <h2 className="text-xl font-serif mb-4">Order Summary</h2>
+              <h2 className="text-xl font-serif mb-4">Résumé de la commande</h2>
               
-              {/* Cart Items */}
+              {/* Articles du panier */}
               <div className="mb-6 max-h-64 overflow-y-auto">
                 {items.map(item => (
                   <div key={item.product.id} className="flex items-start py-3 border-b last:border-b-0">
@@ -436,44 +436,44 @@ const CheckoutPage: React.FC = () => {
                     </div>
                     <div className="flex-grow">
                       <h4 className="text-sm font-medium">{item.product.name}</h4>
-                      <p className="text-gray-500 text-xs">Qty: {item.quantity}</p>
+                      <p className="text-gray-500 text-xs">Qté : {item.quantity}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-medium">{(item.product.price * item.quantity).toFixed(2)} DT</p>
+                      <p className="font-medium">{(item.product.price * item.quantity).toFixed(2)} TND</p>
                     </div>
                   </div>
                 ))}
               </div>
               
-              {/* Totals */}
+              {/* Totaux */}
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Subtotal</span>
-                  <span>{totalPrice.toFixed(2)} DT</span>
+                  <span className="text-gray-600">Sous-total</span>
+                  <span>{totalPrice.toFixed(2)} TND</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Shipping</span>
-                  <span>Free</span>
+                  <span className="text-gray-600">Livraison</span>
+                  <span>Gratuit</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Taxes</span>
-                  <span>{(totalPrice * 0.2).toFixed(2)} DT</span>
+                  <span>{(totalPrice * 0.2).toFixed(2)} TND</span>
                 </div>
                 <div className="border-t pt-3">
                   <div className="flex justify-between font-medium">
                     <span>Total</span>
-                    <span>{(totalPrice + totalPrice * 0.1).toFixed(2)} DT</span>
+                    <span>{(totalPrice + totalPrice * 0.1).toFixed(2)} TND</span>
                   </div>
                 </div>
               </div>
               
-              {/* Place Order Button - Desktop */}
+              {/* Bouton Passer la commande - Bureau */}
               <div className="hidden lg:block">
                 <button 
                   onClick={handleSubmit}
                   className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700 transition-colors"
                 >
-                  Place Order
+                  Passer la commande
                 </button>
               </div>
             </div>

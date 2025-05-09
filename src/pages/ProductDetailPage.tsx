@@ -17,7 +17,7 @@ const ProductDetailPage: React.FC = () => {
     if (product) {
       document.title = `${product.name} - LUXEBEAUTY`;
     } else {
-      document.title = 'Product Not Found - LUXEBEAUTY';
+      document.title = 'Produit Non Trouvé - LUXEBEAUTY';
     }
     window.scrollTo(0, 0);
   }, [product]);
@@ -25,10 +25,10 @@ const ProductDetailPage: React.FC = () => {
   if (!product) {
     return (
       <div className="container mx-auto px-4 py-20 text-center">
-        <h1 className="text-2xl font-serif mb-4">Product Not Found</h1>
-        <p className="text-gray-600 mb-6">The product you are looking for doesn't exist or has been removed.</p>
+        <h1 className="text-2xl font-serif mb-4">Produit Non Trouvé</h1>
+        <p className="text-gray-600 mb-6">Le produit que vous cherchez n'existe pas ou a été supprimé.</p>
         <Link to="/products" className="bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors">
-          Return to Shop
+          Retourner à la Boutique
         </Link>
       </div>
     );
@@ -53,16 +53,16 @@ const ProductDetailPage: React.FC = () => {
   return (
     <div className="mt-16 pt-8 pb-16">
       <div className="container mx-auto px-4">
-        {/* Breadcrumbs */}
+        {/* Fil d'Ariane */}
         <div className="mb-8">
           <Link to="/products" className="flex items-center text-gray-600 hover:text-pink-600 transition-colors">
             <ArrowLeft size={16} className="mr-2" />
-            Back to Products
+            Retour aux Produits
           </Link>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Product Images */}
+          {/* Images du Produit */}
           <div>
             <div className="mb-4 rounded-lg overflow-hidden h-96">
               <img 
@@ -72,7 +72,7 @@ const ProductDetailPage: React.FC = () => {
               />
             </div>
             
-            {/* Image Thumbnails */}
+            {/* Vignettes des Images */}
             {product.images.length > 1 && (
               <div className="flex gap-2">
                 {product.images.map((image, index) => (
@@ -83,7 +83,7 @@ const ProductDetailPage: React.FC = () => {
                   >
                     <img 
                       src={image} 
-                      alt={`${product.name} thumbnail ${index + 1}`} 
+                      alt={`${product.name} vignette ${index + 1}`} 
                       className="w-full h-full object-cover"
                     />
                   </button>
@@ -92,23 +92,23 @@ const ProductDetailPage: React.FC = () => {
             )}
           </div>
           
-          {/* Product Details */}
+          {/* Détails du Produit */}
           <div>
-            {/* Badge: New Arrival or Best Seller */}
+            {/* Badge : Nouvelle Arrivée ou Meilleure Vente */}
             {product.newArrival && (
               <span className="inline-block bg-pink-600 text-white text-xs px-3 py-1 rounded-full mb-3">
-                New Arrival
+                Nouvelle Arrivée
               </span>
             )}
             {product.bestSeller && !product.newArrival && (
               <span className="inline-block bg-amber-500 text-white text-xs px-3 py-1 rounded-full mb-3">
-                Best Seller
+                Meilleure Vente
               </span>
             )}
             
             <h1 className="text-3xl font-serif mb-2">{product.name}</h1>
             
-            {/* Rating */}
+            {/* Évaluation */}
             {product.rating && (
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -122,20 +122,20 @@ const ProductDetailPage: React.FC = () => {
               </div>
             )}
             
-            {/* Price */}
+            {/* Prix */}
             <p className="text-2xl text-pink-600 font-medium mb-6">
               {product.price.toFixed(2)} DT
             </p>
             
-            {/* Short Description */}
+            {/* Description Courte */}
             <p className="text-gray-600 mb-6">
               {product.description}
             </p>
             
-            {/* Quantity Selector */}
+            {/* Sélecteur de Quantité */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Quantity
+                Quantité
               </label>
               <div className="flex items-center">
                 <button 
@@ -164,26 +164,26 @@ const ProductDetailPage: React.FC = () => {
                   <Plus size={16} />
                 </button>
                 <span className="ml-3 text-sm text-gray-500">
-                  {product.stock} available
+                  {product.stock} disponible
                 </span>
               </div>
             </div>
             
-            {/* Add to Cart Button */}
+            {/* Bouton Ajouter au Panier */}
             <div className="flex gap-3 mb-8">
               <button 
                 onClick={handleAddToCart}
                 className="flex-1 bg-pink-600 text-white px-6 py-3 rounded-md hover:bg-pink-700 transition-colors flex items-center justify-center"
               >
                 <ShoppingBag size={18} className="mr-2" />
-                Add to Cart
+                Ajouter au Panier
               </button>
               <button className="bg-gray-100 px-4 py-3 rounded-md hover:bg-gray-200 transition-colors">
                 <Heart size={18} />
               </button>
             </div>
             
-            {/* Product Tabs */}
+            {/* Onglets du Produit */}
             <div className="border-t border-gray-200 pt-8">
               <div className="flex border-b border-gray-200">
                 <button 
@@ -197,7 +197,7 @@ const ProductDetailPage: React.FC = () => {
                     className={`pb-2 px-4 ${activeTab === 'ingredients' ? 'border-b-2 border-pink-600 text-pink-600' : 'text-gray-600'}`}
                     onClick={() => setActiveTab('ingredients')}
                   >
-                    Ingredients
+                    Ingrédients
                   </button>
                 )}
                 {product.howToUse && (
@@ -205,7 +205,7 @@ const ProductDetailPage: React.FC = () => {
                     className={`pb-2 px-4 ${activeTab === 'how-to-use' ? 'border-b-2 border-pink-600 text-pink-600' : 'text-gray-600'}`}
                     onClick={() => setActiveTab('how-to-use')}
                   >
-                    How to Use
+                    Mode d'Emploi
                   </button>
                 )}
               </div>

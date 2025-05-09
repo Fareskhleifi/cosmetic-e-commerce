@@ -12,7 +12,7 @@ const ContactPage: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   
   useEffect(() => {
-    document.title = 'Contact Us - LUXEBEAUTY';
+    document.title = 'Nous Contacter - LUXEBEAUTY';
     window.scrollTo(0, 0);
   }, []);
   
@@ -23,7 +23,6 @@ const ContactPage: React.FC = () => {
       [name]: value
     });
     
-    // Clear error when field is changed
     if (formErrors[name]) {
       setFormErrors({
         ...formErrors,
@@ -35,14 +34,14 @@ const ContactPage: React.FC = () => {
   const validateForm = () => {
     const errors: Record<string, string> = {};
     
-    if (!formData.name) errors.name = 'Name is required';
+    if (!formData.name) errors.name = 'Le nom est requis';
     if (!formData.email) {
-      errors.email = 'Email is required';
+      errors.email = 'L\'email est requis';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = 'Email is invalid';
+      errors.email = 'L\'email est invalide';
     }
-    if (!formData.subject) errors.subject = 'Subject is required';
-    if (!formData.message) errors.message = 'Message is required';
+    if (!formData.subject) errors.subject = 'L\'objet est requis';
+    if (!formData.message) errors.message = 'Le message est requis';
     
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -52,7 +51,6 @@ const ContactPage: React.FC = () => {
     e.preventDefault();
     
     if (validateForm()) {
-      // Simulate form submission
       setTimeout(() => {
         setFormSubmitted(true);
       }, 1000);
@@ -64,10 +62,10 @@ const ContactPage: React.FC = () => {
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-serif mb-4">Contact Us</h1>
+          <h1 className="text-4xl md:text-5xl font-serif mb-4">Nous Contacter</h1>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            We'd love to hear from you. Whether you have a question, feedback, or need assistance,
-            our team is here to help.
+            Nous serions ravis d'avoir de vos nouvelles. Que vous ayez une question, un commentaire ou besoin d'assistance,
+            notre équipe est là pour vous aider.
           </p>
         </div>
         
@@ -82,18 +80,18 @@ const ContactPage: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h2 className="text-2xl font-serif mb-4">Thank You!</h2>
+                  <h2 className="text-2xl font-serif mb-4">Merci !</h2>
                   <p className="text-gray-600">
-                    Your message has been sent successfully. We'll get back to you as soon as possible.
+                    Votre message a été envoyé avec succès. Nous vous répondrons dès que possible.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>
-                  <h2 className="text-2xl font-serif mb-6">Send Us a Message</h2>
+                  <h2 className="text-2xl font-serif mb-6">Envoyez-nous un Message</h2>
                   
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Your Name*
+                      Votre Nom*
                     </label>
                     <input 
                       type="text" 
@@ -109,7 +107,7 @@ const ContactPage: React.FC = () => {
                   
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Email Address*
+                      Adresse Email*
                     </label>
                     <input 
                       type="email" 
@@ -125,7 +123,7 @@ const ContactPage: React.FC = () => {
                   
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Subject*
+                      Objet*
                     </label>
                     <select 
                       name="subject"
@@ -133,12 +131,12 @@ const ContactPage: React.FC = () => {
                       onChange={handleChange}
                       className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.subject ? 'border-red-500' : 'border-gray-300'}`}
                     >
-                      <option value="">Select a subject</option>
-                      <option value="product-inquiry">Product Inquiry</option>
-                      <option value="order-status">Order Status</option>
-                      <option value="returns">Returns & Refunds</option>
-                      <option value="feedback">Feedback</option>
-                      <option value="other">Other</option>
+                      <option value="">Sélectionnez un objet</option>
+                      <option value="product-inquiry">Demande de produit</option>
+                      <option value="order-status">Statut de commande</option>
+                      <option value="returns">Retours et remboursements</option>
+                      <option value="feedback">Commentaires</option>
+                      <option value="other">Autre</option>
                     </select>
                     {formErrors.subject && (
                       <p className="text-red-500 text-xs mt-1">{formErrors.subject}</p>
@@ -165,7 +163,7 @@ const ContactPage: React.FC = () => {
                     type="submit" 
                     className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700 transition-colors"
                   >
-                    Send Message
+                    Envoyer le Message
                   </button>
                 </form>
               )}
@@ -183,19 +181,19 @@ const ContactPage: React.FC = () => {
                 style={{ border: 0 }} 
                 allowFullScreen
                 loading="lazy"
-                title="LUXEBEAUTY Location"
+                title="Emplacement LUXEBEAUTY"
               ></iframe>
             </div>
             
             {/* Contact Details */}
             <div className="bg-white rounded-lg shadow-sm p-8">
-              <h2 className="text-2xl font-serif mb-6">Get in Touch</h2>
+              <h2 className="text-2xl font-serif mb-6">Prenez Contact</h2>
               
               <ul className="space-y-6">
                 <li className="flex">
                   <MapPin size={20} className="text-pink-600 flex-shrink-0 mr-4 mt-1" />
                   <div>
-                    <h3 className="font-medium mb-1">Our Address</h3>
+                    <h3 className="font-medium mb-1">Notre Adresse</h3>
                     <p className="text-gray-600">
                       Rte de l'aéroport, <br />
                       Sfax, <br />
@@ -207,7 +205,7 @@ const ContactPage: React.FC = () => {
                 <li className="flex">
                   <Phone size={20} className="text-pink-600 flex-shrink-0 mr-4 mt-1" />
                   <div>
-                    <h3 className="font-medium mb-1">Phone</h3>
+                    <h3 className="font-medium mb-1">Téléphone</h3>
                     <p className="text-gray-600">
                       +216 12 345 678
                     </p>
@@ -227,11 +225,11 @@ const ContactPage: React.FC = () => {
                 <li className="flex">
                   <Clock size={20} className="text-pink-600 flex-shrink-0 mr-4 mt-1" />
                   <div>
-                    <h3 className="font-medium mb-1">Business Hours</h3>
+                    <h3 className="font-medium mb-1">Horaires d'Ouverture</h3>
                     <p className="text-gray-600">
-                      Monday - Friday: 9:00 AM - 6:00 PM <br />
-                      Saturday: 10:00 AM - 4:00 PM <br />
-                      Sunday: Closed
+                      Lundi - Vendredi : 9h00 - 18h00 <br />
+                      Samedi : 10h00 - 16h00 <br />
+                      Dimanche : Fermé
                     </p>
                   </div>
                 </li>
@@ -240,15 +238,15 @@ const ContactPage: React.FC = () => {
             
             {/* FAQ Link */}
             <div className="mt-6 bg-pink-50 rounded-lg p-6 text-center">
-              <h3 className="text-xl font-serif mb-2">Have Questions?</h3>
+              <h3 className="text-xl font-serif mb-2">Des Questions ?</h3>
               <p className="text-gray-600 mb-4">
-                Check our Frequently Asked Questions for quick answers to common questions.
+                Consultez notre FAQ pour des réponses rapides aux questions courantes.
               </p>
               <a 
                 href="#" 
                 className="inline-block bg-white text-pink-600 border border-pink-600 px-6 py-2 rounded-md hover:bg-pink-600 hover:text-white transition-colors"
               >
-                Visit FAQ
+                Visiter la FAQ
               </a>
             </div>
           </div>

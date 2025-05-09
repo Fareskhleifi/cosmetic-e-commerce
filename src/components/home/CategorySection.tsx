@@ -7,9 +7,9 @@ const CategorySection: React.FC = () => {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-serif mb-3">Shop by Category</h2>
+          <h2 className="text-3xl font-serif mb-3">Magasiner par Catégorie</h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            Browse our collection of premium beauty products by category to find exactly what you're looking for.
+            Parcourez notre collection de produits de beauté haut de gamme par catégorie pour trouver exactement ce que vous cherchez.
           </p>
         </div>
         

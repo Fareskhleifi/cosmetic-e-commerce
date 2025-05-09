@@ -3,23 +3,23 @@ import { Link } from 'react-router-dom';
 import { User, Package, Heart, CreditCard, Settings, LogOut } from 'lucide-react';
 
 const AccountPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('profile');
+  const [activeTab, setActiveTab] = useState('profil');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginForm, setLoginForm] = useState({
     email: '',
-    password: ''
+    motDePasse: ''
   });
   const [registerForm, setRegisterForm] = useState({
-    firstName: '',
-    lastName: '',
+    prenom: '',
+    nom: '',
     email: '',
-    password: '',
-    confirmPassword: ''
+    motDePasse: '',
+    confirmerMotDePasse: ''
   });
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   
   useEffect(() => {
-    document.title = 'My Account - LUXEBEAUTY';
+    document.title = 'Mon Compte - LUXEBEAUTY';
     window.scrollTo(0, 0);
   }, []);
   
@@ -30,7 +30,7 @@ const AccountPage: React.FC = () => {
       [name]: value
     });
     
-    // Clear error when field is changed
+    // Effacer l'erreur lorsque le champ est modifié
     if (formErrors[name]) {
       setFormErrors({
         ...formErrors,
@@ -46,7 +46,7 @@ const AccountPage: React.FC = () => {
       [name]: value
     });
     
-    // Clear error when field is changed
+    // Effacer l'erreur lorsque le champ est modifié
     if (formErrors[name]) {
       setFormErrors({
         ...formErrors,
@@ -59,11 +59,11 @@ const AccountPage: React.FC = () => {
     const errors: Record<string, string> = {};
     
     if (!loginForm.email) {
-      errors.email = 'Email is required';
+      errors.email = 'L\'email est requis';
     } else if (!/\S+@\S+\.\S+/.test(loginForm.email)) {
-      errors.email = 'Email is invalid';
+      errors.email = 'L\'email est invalide';
     }
-    if (!loginForm.password) errors.password = 'Password is required';
+    if (!loginForm.motDePasse) errors.motDePasse = 'Le mot de passe est requis';
     
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -72,22 +72,22 @@ const AccountPage: React.FC = () => {
   const validateRegisterForm = () => {
     const errors: Record<string, string> = {};
     
-    if (!registerForm.firstName) errors.firstName = 'First name is required';
-    if (!registerForm.lastName) errors.lastName = 'Last name is required';
+    if (!registerForm.prenom) errors.prenom = 'Le prénom est requis';
+    if (!registerForm.nom) errors.nom = 'Le nom est requis';
     if (!registerForm.email) {
-      errors.email = 'Email is required';
+      errors.email = 'L\'email est requis';
     } else if (!/\S+@\S+\.\S+/.test(registerForm.email)) {
-      errors.email = 'Email is invalid';
+      errors.email = 'L\'email est invalide';
     }
-    if (!registerForm.password) {
-      errors.password = 'Password is required';
-    } else if (registerForm.password.length < 6) {
-      errors.password = 'Password must be at least 6 characters';
+    if (!registerForm.motDePasse) {
+      errors.motDePasse = 'Le mot de passe est requis';
+    } else if (registerForm.motDePasse.length < 6) {
+      errors.motDePasse = 'Le mot de passe doit comporter au moins 6 caractères';
     }
-    if (!registerForm.confirmPassword) {
-      errors.confirmPassword = 'Please confirm your password';
-    } else if (registerForm.password !== registerForm.confirmPassword) {
-      errors.confirmPassword = 'Passwords do not match';
+    if (!registerForm.confirmerMotDePasse) {
+      errors.confirmerMotDePasse = 'Veuillez confirmer votre mot de passe';
+    } else if (registerForm.motDePasse !== registerForm.confirmerMotDePasse) {
+      errors.confirmerMotDePasse = 'Les mots de passe ne correspondent pas';
     }
     
     setFormErrors(errors);
@@ -98,7 +98,7 @@ const AccountPage: React.FC = () => {
     e.preventDefault();
     
     if (validateLoginForm()) {
-      // Simulate successful login
+      // Simuler une connexion réussie
       setIsLoggedIn(true);
     }
   };
@@ -107,7 +107,7 @@ const AccountPage: React.FC = () => {
     e.preventDefault();
     
     if (validateRegisterForm()) {
-      // Simulate successful registration and login
+      // Simuler une inscription et une connexion réussies
       setIsLoggedIn(true);
     }
   };
@@ -121,30 +121,30 @@ const AccountPage: React.FC = () => {
       <div className="mt-16 pt-12 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h1 className="text-3xl font-serif mb-8 text-center">My Account</h1>
+            <h1 className="text-3xl font-serif mb-8 text-center">Mon Compte</h1>
             
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               <div className="flex border-b">
                 <button 
-                  className={`w-1/2 py-4 font-medium ${activeTab === 'login' ? 'bg-pink-50 text-pink-600' : 'bg-white text-gray-600'}`}
-                  onClick={() => setActiveTab('login')}
+                  className={`w-1/2 py-4 font-medium ${activeTab === 'connexion' ? 'bg-pink-50 text-pink-600' : 'bg-white text-gray-600'}`}
+                  onClick={() => setActiveTab('connexion')}
                 >
-                  Login
+                  Connexion
                 </button>
                 <button 
-                  className={`w-1/2 py-4 font-medium ${activeTab === 'register' ? 'bg-pink-50 text-pink-600' : 'bg-white text-gray-600'}`}
-                  onClick={() => setActiveTab('register')}
+                  className={`w-1/2 py-4 font-medium ${activeTab === 'inscription' ? 'bg-pink-50 text-pink-600' : 'bg-white text-gray-600'}`}
+                  onClick={() => setActiveTab('inscription')}
                 >
-                  Register
+                  Inscription
                 </button>
               </div>
               
               <div className="p-8">
-                {activeTab === 'login' ? (
+                {activeTab === 'connexion' ? (
                   <form onSubmit={handleLogin}>
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address*
+                        Adresse Email*
                       </label>
                       <input 
                         type="email" 
@@ -161,21 +161,21 @@ const AccountPage: React.FC = () => {
                     <div className="mb-6">
                       <div className="flex justify-between mb-1">
                         <label className="block text-sm font-medium text-gray-700">
-                          Password*
+                          Mot de Passe*
                         </label>
                         <a href="#" className="text-sm text-pink-600 hover:text-pink-700">
-                          Forgot Password?
+                          Mot de passe oublié ?
                         </a>
                       </div>
                       <input 
                         type="password" 
-                        name="password"
-                        value={loginForm.password}
+                        name="motDePasse"
+                        value={loginForm.motDePasse}
                         onChange={handleLoginChange}
-                        className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.password ? 'border-red-500' : 'border-gray-300'}`}
+                        className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.motDePasse ? 'border-red-500' : 'border-gray-300'}`}
                       />
-                      {formErrors.password && (
-                        <p className="text-red-500 text-xs mt-1">{formErrors.password}</p>
+                      {formErrors.motDePasse && (
+                        <p className="text-red-500 text-xs mt-1">{formErrors.motDePasse}</p>
                       )}
                     </div>
                     
@@ -183,18 +183,18 @@ const AccountPage: React.FC = () => {
                       type="submit" 
                       className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700 transition-colors"
                     >
-                      Login
+                      Connexion
                     </button>
                     
                     <div className="mt-4 text-center">
                       <p className="text-gray-600">
-                        Don't have an account?{' '}
+                        Pas de compte ?{' '}
                         <button 
                           type="button"
                           className="text-pink-600 hover:text-pink-700 font-medium"
-                          onClick={() => setActiveTab('register')}
+                          onClick={() => setActiveTab('inscription')}
                         >
-                          Register now
+                          Inscrivez-vous maintenant
                         </button>
                       </p>
                     </div>
@@ -204,39 +204,39 @@ const AccountPage: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          First Name*
+                          Prénom*
                         </label>
                         <input 
                           type="text" 
-                          name="firstName"
-                          value={registerForm.firstName}
+                          name="prenom"
+                          value={registerForm.prenom}
                           onChange={handleRegisterChange}
-                          className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.firstName ? 'border-red-500' : 'border-gray-300'}`}
+                          className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.prenom ? 'border-red-500' : 'border-gray-300'}`}
                         />
-                        {formErrors.firstName && (
-                          <p className="text-red-500 text-xs mt-1">{formErrors.firstName}</p>
+                        {formErrors.prenom && (
+                          <p className="text-red-500 text-xs mt-1">{formErrors.prenom}</p>
                         )}
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Last Name*
+                          Nom*
                         </label>
                         <input 
                           type="text" 
-                          name="lastName"
-                          value={registerForm.lastName}
+                          name="nom"
+                          value={registerForm.nom}
                           onChange={handleRegisterChange}
-                          className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.lastName ? 'border-red-500' : 'border-gray-300'}`}
+                          className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.nom ? 'border-red-500' : 'border-gray-300'}`}
                         />
-                        {formErrors.lastName && (
-                          <p className="text-red-500 text-xs mt-1">{formErrors.lastName}</p>
+                        {formErrors.nom && (
+                          <p className="text-red-500 text-xs mt-1">{formErrors.nom}</p>
                         )}
                       </div>
                     </div>
                     
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address*
+                        Adresse Email*
                       </label>
                       <input 
                         type="email" 
@@ -252,33 +252,33 @@ const AccountPage: React.FC = () => {
                     
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Password*
+                        Mot de Passe*
                       </label>
                       <input 
                         type="password" 
-                        name="password"
-                        value={registerForm.password}
+                        name="motDePasse"
+                        value={registerForm.motDePasse}
                         onChange={handleRegisterChange}
-                        className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.password ? 'border-red-500' : 'border-gray-300'}`}
+                        className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.motDePasse ? 'border-red-500' : 'border-gray-300'}`}
                       />
-                      {formErrors.password && (
-                        <p className="text-red-500 text-xs mt-1">{formErrors.password}</p>
+                      {formErrors.motDePasse && (
+                        <p className="text-red-500 text-xs mt-1">{formErrors.motDePasse}</p>
                       )}
                     </div>
                     
                     <div className="mb-6">
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Confirm Password*
+                        Confirmer le Mot de Passe*
                       </label>
                       <input 
                         type="password" 
-                        name="confirmPassword"
-                        value={registerForm.confirmPassword}
+                        name="confirmerMotDePasse"
+                        value={registerForm.confirmerMotDePasse}
                         onChange={handleRegisterChange}
-                        className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
+                        className={`w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300 ${formErrors.confirmerMotDePasse ? 'border-red-500' : 'border-gray-300'}`}
                       />
-                      {formErrors.confirmPassword && (
-                        <p className="text-red-500 text-xs mt-1">{formErrors.confirmPassword}</p>
+                      {formErrors.confirmerMotDePasse && (
+                        <p className="text-red-500 text-xs mt-1">{formErrors.confirmerMotDePasse}</p>
                       )}
                     </div>
                     
@@ -286,18 +286,18 @@ const AccountPage: React.FC = () => {
                       type="submit" 
                       className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700 transition-colors"
                     >
-                      Register
+                      Inscription
                     </button>
                     
                     <div className="mt-4 text-center">
                       <p className="text-gray-600">
-                        Already have an account?{' '}
+                        Déjà un compte ?{' '}
                         <button 
                           type="button"
                           className="text-pink-600 hover:text-pink-700 font-medium"
-                          onClick={() => setActiveTab('login')}
+                          onClick={() => setActiveTab('connexion')}
                         >
-                          Login
+                          Connexion
                         </button>
                       </p>
                     </div>
@@ -314,10 +314,10 @@ const AccountPage: React.FC = () => {
   return (
     <div className="mt-16 pt-12 pb-16">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-serif mb-8 text-center">My Account</h1>
+        <h1 className="text-3xl font-serif mb-8 text-center">Mon Compte</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Sidebar Navigation */}
+          {/* Navigation Latérale */}
           <div className="md:col-span-1">
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               <div className="p-6 border-b">
@@ -326,8 +326,8 @@ const AccountPage: React.FC = () => {
                     <User size={20} className="text-pink-600" />
                   </div>
                   <div>
-                    <h3 className="font-medium">John Doe</h3>
-                    <p className="text-gray-600 text-sm">john.doe@example.com</p>
+                    <h3 className="font-medium">Jean Dupont</h3>
+                    <p className="text-gray-600 text-sm">jean.dupont@exemple.com</p>
                   </div>
                 </div>
               </div>
@@ -336,47 +336,47 @@ const AccountPage: React.FC = () => {
                 <ul className="space-y-1">
                   <li>
                     <button 
-                      onClick={() => setActiveTab('profile')}
-                      className={`w-full text-left px-4 py-2 rounded-md flex items-center ${activeTab === 'profile' ? 'bg-pink-50 text-pink-600' : 'text-gray-600 hover:bg-gray-50'}`}
+                      onClick={() => setActiveTab('profil')}
+                      className={`w-full text-left px-4 py-2 rounded-md flex items-center ${activeTab === 'profil' ? 'bg-pink-50 text-pink-600' : 'text-gray-600 hover:bg-gray-50'}`}
                     >
                       <User size={18} className="mr-3" />
-                      Profile
+                      Profil
                     </button>
                   </li>
                   <li>
                     <button 
-                      onClick={() => setActiveTab('orders')}
-                      className={`w-full text-left px-4 py-2 rounded-md flex items-center ${activeTab === 'orders' ? 'bg-pink-50 text-pink-600' : 'text-gray-600 hover:bg-gray-50'}`}
+                      onClick={() => setActiveTab('commandes')}
+                      className={`w-full text-left px-4 py-2 rounded-md flex items-center ${activeTab === 'commandes' ? 'bg-pink-50 text-pink-600' : 'text-gray-600 hover:bg-gray-50'}`}
                     >
                       <Package size={18} className="mr-3" />
-                      Orders
+                      Commandes
                     </button>
                   </li>
                   <li>
                     <button 
-                      onClick={() => setActiveTab('wishlist')}
-                      className={`w-full text-left px-4 py-2 rounded-md flex items-center ${activeTab === 'wishlist' ? 'bg-pink-50 text-pink-600' : 'text-gray-600 hover:bg-gray-50'}`}
+                      onClick={() => setActiveTab('listeEnvies')}
+                      className={`w-full text-left px-4 py-2 rounded-md flex items-center ${activeTab === 'listeEnvies' ? 'bg-pink-50 text-pink-600' : 'text-gray-600 hover:bg-gray-50'}`}
                     >
                       <Heart size={18} className="mr-3" />
-                      Wishlist
+                      Liste d'envies
                     </button>
                   </li>
                   <li>
                     <button 
-                      onClick={() => setActiveTab('payment')}
-                      className={`w-full text-left px-4 py-2 rounded-md flex items-center ${activeTab === 'payment' ? 'bg-pink-50 text-pink-600' : 'text-gray-600 hover:bg-gray-50'}`}
+                      onClick={() => setActiveTab('paiement')}
+                      className={`w-full text-left px-4 py-2 rounded-md flex items-center ${activeTab === 'paiement' ? 'bg-pink-50 text-pink-600' : 'text-gray-600 hover:bg-gray-50'}`}
                     >
                       <CreditCard size={18} className="mr-3" />
-                      Payment Methods
+                      Méthodes de Paiement
                     </button>
                   </li>
                   <li>
                     <button 
-                      onClick={() => setActiveTab('settings')}
-                      className={`w-full text-left px-4 py-2 rounded-md flex items-center ${activeTab === 'settings' ? 'bg-pink-50 text-pink-600' : 'text-gray-600 hover:bg-gray-50'}`}
+                      onClick={() => setActiveTab('parametres')}
+                      className={`w-full text-left px-4 py-2 rounded-md flex items-center ${activeTab === 'parametres' ? 'bg-pink-50 text-pink-600' : 'text-gray-600 hover:bg-gray-50'}`}
                     >
                       <Settings size={18} className="mr-3" />
-                      Account Settings
+                      Paramètres du Compte
                     </button>
                   </li>
                   <li className="pt-2 border-t mt-2">
@@ -385,7 +385,7 @@ const AccountPage: React.FC = () => {
                       className="w-full text-left px-4 py-2 rounded-md flex items-center text-gray-600 hover:bg-gray-50"
                     >
                       <LogOut size={18} className="mr-3" />
-                      Logout
+                      Déconnexion
                     </button>
                   </li>
                 </ul>
@@ -393,32 +393,32 @@ const AccountPage: React.FC = () => {
             </div>
           </div>
           
-          {/* Content Area */}
+          {/* Zone de Contenu */}
           <div className="md:col-span-3">
             <div className="bg-white rounded-lg shadow-sm p-6">
-              {activeTab === 'profile' && (
+              {activeTab === 'profil' && (
                 <div>
-                  <h2 className="text-2xl font-serif mb-6">My Profile</h2>
+                  <h2 className="text-2xl font-serif mb-6">Mon Profil</h2>
                   
                   <form>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          First Name
+                          Prénom
                         </label>
                         <input 
                           type="text" 
-                          defaultValue="John"
+                          defaultValue="Jean"
                           className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300"
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Last Name
+                          Nom
                         </label>
                         <input 
                           type="text" 
-                          defaultValue="Doe"
+                          defaultValue="Dupont"
                           className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300"
                         />
                       </div>
@@ -426,22 +426,22 @@ const AccountPage: React.FC = () => {
                     
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address
+                        Adresse Email
                       </label>
                       <input 
                         type="email" 
-                        defaultValue="john.doe@example.com"
+                        defaultValue="jean.dupont@exemple.com"
                         className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300"
                       />
                     </div>
                     
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Phone Number
+                        Numéro de Téléphone
                       </label>
                       <input 
                         type="tel" 
-                        defaultValue="+1 (555) 123-4567"
+                        defaultValue="+33 123 456 789"
                         className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300"
                       />
                     </div>
@@ -450,26 +450,26 @@ const AccountPage: React.FC = () => {
                       type="submit" 
                       className="bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors"
                     >
-                      Update Profile
+                      Mettre à jour le Profil
                     </button>
                   </form>
                 </div>
               )}
               
-              {activeTab === 'orders' && (
+              {activeTab === 'commandes' && (
                 <div>
-                  <h2 className="text-2xl font-serif mb-6">Order History</h2>
+                  <h2 className="text-2xl font-serif mb-6">Historique des Commandes</h2>
                   
                   <div className="border rounded-md overflow-hidden">
                     <div className="grid grid-cols-12 bg-gray-50 p-4 border-b">
                       <div className="col-span-2">
-                        <h3 className="font-medium">Order</h3>
+                        <h3 className="font-medium">Commande</h3>
                       </div>
                       <div className="col-span-3">
                         <h3 className="font-medium">Date</h3>
                       </div>
                       <div className="col-span-2">
-                        <h3 className="font-medium">Status</h3>
+                        <h3 className="font-medium">Statut</h3>
                       </div>
                       <div className="col-span-3">
                         <h3 className="font-medium">Total</h3>
@@ -480,61 +480,61 @@ const AccountPage: React.FC = () => {
                     </div>
                     
                     <div className="p-4 text-center">
-                      <p className="text-gray-600">You haven't placed any orders yet.</p>
+                      <p className="text-gray-600">Vous n'avez encore passé aucune commande.</p>
                       <Link 
-                        to="/products" 
+                        to="/produits" 
                         className="inline-block mt-4 bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors"
                       >
-                        Shop Now
+                        Acheter Maintenant
                       </Link>
                     </div>
                   </div>
                 </div>
               )}
               
-              {activeTab === 'wishlist' && (
+              {activeTab === 'listeEnvies' && (
                 <div>
-                  <h2 className="text-2xl font-serif mb-6">My Wishlist</h2>
+                  <h2 className="text-2xl font-serif mb-6">Ma Liste d'Envies</h2>
                   
                   <div className="text-center py-8">
                     <Heart size={64} className="mx-auto text-gray-300 mb-4" />
-                    <p className="text-gray-600 mb-4">Your wishlist is empty.</p>
+                    <p className="text-gray-600 mb-4">Votre liste d'envies est vide.</p>
                     <Link 
-                      to="/products" 
+                      to="/produits" 
                       className="inline-block bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors"
                     >
-                      Browse Products
+                      Parcourir les Produits
                     </Link>
                   </div>
                 </div>
               )}
               
-              {activeTab === 'payment' && (
+              {activeTab === 'paiement' && (
                 <div>
-                  <h2 className="text-2xl font-serif mb-6">Payment Methods</h2>
+                  <h2 className="text-2xl font-serif mb-6">Méthodes de Paiement</h2>
                   
                   <div className="text-center py-8">
                     <CreditCard size={64} className="mx-auto text-gray-300 mb-4" />
-                    <p className="text-gray-600 mb-4">You haven't saved any payment methods yet.</p>
+                    <p className="text-gray-600 mb-4">Vous n'avez encore enregistré aucune méthode de paiement.</p>
                     <button 
                       className="inline-block bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors"
                     >
-                      Add Payment Method
+                      Ajouter une Méthode de Paiement
                     </button>
                   </div>
                 </div>
               )}
               
-              {activeTab === 'settings' && (
+              {activeTab === 'parametres' && (
                 <div>
-                  <h2 className="text-2xl font-serif mb-6">Account Settings</h2>
+                  <h2 className="text-2xl font-serif mb-6">Paramètres du Compte</h2>
                   
                   <div className="mb-8">
-                    <h3 className="text-lg font-medium mb-4">Change Password</h3>
+                    <h3 className="text-lg font-medium mb-4">Changer le Mot de Passe</h3>
                     <form>
                       <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Current Password
+                          Mot de Passe Actuel
                         </label>
                         <input 
                           type="password" 
@@ -543,7 +543,7 @@ const AccountPage: React.FC = () => {
                       </div>
                       <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          New Password
+                          Nouveau Mot de Passe
                         </label>
                         <input 
                           type="password" 
@@ -552,7 +552,7 @@ const AccountPage: React.FC = () => {
                       </div>
                       <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Confirm New Password
+                          Confirmer le Nouveau Mot de Passe
                         </label>
                         <input 
                           type="password" 
@@ -563,13 +563,13 @@ const AccountPage: React.FC = () => {
                         type="submit" 
                         className="bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors"
                       >
-                        Update Password
+                        Mettre à jour le Mot de Passe
                       </button>
                     </form>
                   </div>
                   
                   <div className="border-t pt-6">
-                    <h3 className="text-lg font-medium mb-4">Email Preferences</h3>
+                    <h3 className="text-lg font-medium mb-4">Préférences Email</h3>
                     <div className="space-y-3">
                       <label className="flex items-start">
                         <input 
@@ -579,7 +579,7 @@ const AccountPage: React.FC = () => {
                         />
                         <div>
                           <span className="font-medium">Newsletter</span>
-                          <p className="text-sm text-gray-600">Receive updates about new products and promotions.</p>
+                          <p className="text-sm text-gray-600">Recevez des mises à jour sur les nouveaux produits et promotions.</p>
                         </div>
                       </label>
                       <label className="flex items-start">
@@ -589,8 +589,8 @@ const AccountPage: React.FC = () => {
                           defaultChecked
                         />
                         <div>
-                          <span className="font-medium">Order Updates</span>
-                          <p className="text-sm text-gray-600">Receive emails about your orders and shipping status.</p>
+                          <span className="font-medium">Mises à jour des Commandes</span>
+                          <p className="text-sm text-gray-600">Recevez des emails sur vos commandes et l'état de l'expédition.</p>
                         </div>
                       </label>
                       <label className="flex items-start">
@@ -599,15 +599,15 @@ const AccountPage: React.FC = () => {
                           className="mt-1 mr-3"
                         />
                         <div>
-                          <span className="font-medium">Special Offers</span>
-                          <p className="text-sm text-gray-600">Receive exclusive offers and discounts.</p>
+                          <span className="font-medium">Offres Spéciales</span>
+                          <p className="text-sm text-gray-600">Recevez des offres exclusives et des réductions.</p>
                         </div>
                       </label>
                     </div>
                     <button 
                       className="mt-4 bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors"
                     >
-                      Save Preferences
+                      Enregistrer les Préférences
                     </button>
                   </div>
                 </div>

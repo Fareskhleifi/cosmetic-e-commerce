@@ -7,7 +7,7 @@ const CartPage: React.FC = () => {
   const { items, removeFromCart, updateQuantity, totalPrice } = useCart();
   
   useEffect(() => {
-    document.title = 'Shopping Cart - LUXEBEAUTY';
+    document.title = 'Panier - LUXEBEAUTY';
     window.scrollTo(0, 0);
   }, []);
 
@@ -17,15 +17,15 @@ const CartPage: React.FC = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="bg-white p-8 rounded-lg shadow-sm max-w-md mx-auto">
             <ShoppingBag size={64} className="mx-auto text-gray-300 mb-4" />
-            <h1 className="text-2xl font-serif mb-4">Your Cart is Empty</h1>
+            <h1 className="text-2xl font-serif mb-4">Votre panier est vide</h1>
             <p className="text-gray-600 mb-6">
-              Looks like you haven't added any products to your cart yet.
+              Il semble que vous n'ayez pas encore ajouté de produits à votre panier.
             </p>
             <Link 
               to="/products" 
               className="bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition-colors inline-block"
             >
-              Continue Shopping
+              Continuer vos achats
             </Link>
           </div>
         </div>
@@ -36,7 +36,7 @@ const CartPage: React.FC = () => {
   return (
     <div className="mt-16 pt-12 pb-16">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-serif mb-8 text-center">Shopping Cart</h1>
+        <h1 className="text-3xl font-serif mb-8 text-center">Panier</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Cart Items */}
@@ -44,13 +44,13 @@ const CartPage: React.FC = () => {
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               <div className="hidden md:grid grid-cols-12 bg-gray-50 p-4 border-b">
                 <div className="col-span-6">
-                  <h3 className="font-medium">Product</h3>
+                  <h3 className="font-medium">Produit</h3>
                 </div>
                 <div className="col-span-2 text-center">
-                  <h3 className="font-medium">Price</h3>
+                  <h3 className="font-medium">Prix</h3>
                 </div>
                 <div className="col-span-2 text-center">
-                  <h3 className="font-medium">Quantity</h3>
+                  <h3 className="font-medium">Quantité</h3>
                 </div>
                 <div className="col-span-2 text-right">
                   <h3 className="font-medium">Total</h3>
@@ -80,20 +80,20 @@ const CartPage: React.FC = () => {
                           onClick={() => removeFromCart(item.product.id)}
                         >
                           <Trash2 size={14} className="mr-1" />
-                          Remove
+                          Supprimer
                         </button>
                       </div>
                     </div>
                     
                     {/* Price */}
                     <div className="md:col-span-2 md:text-center flex justify-between mb-2 md:mb-0">
-                      <span className="md:hidden">Price:</span>
+                      <span className="md:hidden">Prix :</span>
                       <span>{item.product.price.toFixed(2)} DT</span>
                     </div>
                     
                     {/* Quantity */}
                     <div className="md:col-span-2 md:text-center flex justify-between items-center mb-2 md:mb-0">
-                      <span className="md:hidden">Quantity:</span>
+                      <span className="md:hidden">Quantité :</span>
                       <div className="flex items-center">
                         <button 
                           onClick={() => updateQuantity(item.product.id, Math.max(1, item.quantity - 1))}
@@ -113,7 +113,7 @@ const CartPage: React.FC = () => {
                     
                     {/* Total */}
                     <div className="md:col-span-2 md:text-right flex justify-between mb-2 md:mb-0">
-                      <span className="md:hidden">Total:</span>
+                      <span className="md:hidden">Total :</span>
                       <span className="font-medium">{(item.product.price * item.quantity).toFixed(2)} DT</span>
                     </div>
                   </div>
@@ -127,7 +127,7 @@ const CartPage: React.FC = () => {
                 className="flex items-center text-pink-600 hover:text-pink-700 transition-colors"
               >
                 <ShoppingBag size={16} className="mr-2" />
-                Continue Shopping
+                Continuer vos achats
               </Link>
             </div>
           </div>
@@ -135,20 +135,20 @@ const CartPage: React.FC = () => {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-serif mb-4">Order Summary</h2>
+              <h2 className="text-xl font-serif mb-4">Résumé de la commande</h2>
               
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Subtotal</span>
+                  <span className="text-gray-600">Sous-total</span>
                   <span>{totalPrice.toFixed(2)} DT</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Shipping</span>
-                  <span>Calculated at checkout</span>
+                  <span className="text-gray-600">Livraison</span>
+                  <span>Calculé à la caisse</span>
                 </div>
                 <div className="border-t pt-3">
                   <div className="flex justify-between font-medium">
-                    <span>Estimated Total</span>
+                    <span>Total estimé</span>
                     <span>{totalPrice.toFixed(2)} DT</span>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ const CartPage: React.FC = () => {
                 to="/checkout" 
                 className="w-full bg-pink-600 text-white py-3 rounded-md hover:bg-pink-700 transition-colors flex items-center justify-center"
               >
-                Proceed to Checkout
+                Passer à la caisse
               </Link>
             </div>
           </div>

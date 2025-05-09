@@ -31,27 +31,27 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-serif font-bold text-pink-800 tracking-wide">
+          <Link to="/cosmetic-e-commerce" className="text-2xl font-serif font-bold text-pink-800 tracking-wide">
             LUXE<span className="text-gold-500">BEAUTY</span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Navigation Bureau */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gold-500 hover:text-pink-600 transition-colors font-medium">
-              Home
+            <Link to="/cosmetic-e-commerce" className="text-gold-500 hover:text-pink-600 transition-colors font-medium">
+              Accueil
             </Link>
             <Link to="/products" className="text-gold-500 hover:text-pink-600 transition-colors font-medium">
-              Shop
+              Boutique
             </Link>
             <Link to="/about" className="text-gold-500 hover:text-pink-600 transition-colors font-medium">
-              About
+              À Propos
             </Link>
             <Link to="/contact" className="text-gold-500 hover:text-pink-600 transition-colors font-medium">
               Contact
             </Link>
           </nav>
 
-          {/* Icons */}
+          {/* Icônes */}
           <div className="flex items-center space-x-4">
             <button 
               onClick={() => setSearchOpen(!searchOpen)}
@@ -79,12 +79,12 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Search Bar */}
+        {/* Barre de Recherche */}
         {searchOpen && (
           <div className="mt-4 relative">
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder="Rechercher des produits..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300"
@@ -99,18 +99,18 @@ const Header: React.FC = () => {
         )}
       </div>
 
-      {/* Mobile Menu */}
+      {/* Menu Mobile */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg absolute w-full">
           <nav className="flex flex-col py-4 px-4">
-            <Link to="/" className="py-2 px-4 text-gray-800 hover:bg-pink-50 hover:text-pink-600">
-              Home
+            <Link to="/cosmetic-e-commerce" className="py-2 px-4 text-gray-800 hover:bg-pink-50 hover:text-pink-600">
+              Accueil
             </Link>
             <Link to="/products" className="py-2 px-4 text-gray-800 hover:bg-pink-50 hover:text-pink-600">
-              Shop
+              Boutique
             </Link>
             <Link to="/about" className="py-2 px-4 text-gray-800 hover:bg-pink-50 hover:text-pink-600">
-              About
+              À Propos
             </Link>
             <Link to="/contact" className="py-2 px-4 text-gray-800 hover:bg-pink-50 hover:text-pink-600">
               Contact

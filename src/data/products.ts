@@ -3,9 +3,9 @@ import { Product } from '../types';
 export const products: Product[] = [
   {
     id: 1,
-    name: "Hydrating Face Serum",
+    name: "Sérum Hydratant Visage",
     price: 39.99,
-    description: "Our best-selling hydrating face serum with hyaluronic acid provides 24-hour hydration and plumps skin for a youthful appearance.",
+    description: "Notre sérum hydratant visage le plus vendu, avec de l'acide hyaluronique, offre une hydratation de 24 heures et repulpe la peau pour une apparence jeune.",
     images: [
       "https://images.pexels.com/photos/6621462/pexels-photo-6621462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "https://images.pexels.com/photos/5797999/pexels-photo-5797999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -14,15 +14,15 @@ export const products: Product[] = [
     featured: true,
     bestSeller: true,
     ingredients: "Water, Glycerin, Sodium Hyaluronate, Pentylene Glycol, Citric Acid, Sodium Citrate, Panthenol, Phenoxyethanol, Ethylhexylglycerin",
-    howToUse: "Apply a few drops to clean, damp skin morning and night before moisturizer.",
+    howToUse: "Appliquez quelques gouttes sur une peau propre et humide matin et soir avant votre crème hydratante.",
     rating: 4.8,
     stock: 25
   },
   {
     id: 2,
-    name: "Anti-Aging Night Cream",
+    name: "Crème de Nuit Anti-Âge",
     price: 49.99,
-    description: "Rich night cream with retinol and peptides that works while you sleep to reduce fine lines and wrinkles.",
+    description: "Crème de nuit riche avec du rétinol et des peptides qui agit pendant votre sommeil pour réduire les rides et ridules.",
     images: [
       "https://images.pexels.com/photos/7290698/pexels-photo-7290698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "https://images.pexels.com/photos/7290715/pexels-photo-7290715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -30,15 +30,15 @@ export const products: Product[] = [
     category: "face",
     featured: true,
     ingredients: "Water, Glycerin, Caprylic/Capric Triglyceride, Retinol, Ceramide NP, Peptides, Shea Butter, Dimethicone, Fragrance",
-    howToUse: "Apply a small amount to clean face and neck in the evening. Avoid eye area.",
+    howToUse: "Appliquez une petite quantité sur le visage et le cou propres le soir. Évitez le contour des yeux.",
     rating: 4.6,
     stock: 18
   },
   {
     id: 3,
-    name: "Vitamin C Brightening Serum",
+    name: "Sérum Éclatant Vitamine C",
     price: 44.99,
-    description: "Powerful 15% vitamin C serum that brightens skin tone, reduces dark spots, and boosts collagen production.",
+    description: "Sérum puissant à 15 % de vitamine C qui éclaircit le teint, réduit les taches brunes et stimule la production de collagène.",
     images: [
       "https://i.postimg.cc/prnSNkcx/vc.jpg",
       "https://i.postimg.cc/j529cRzD/vc2.avif"
@@ -46,15 +46,15 @@ export const products: Product[] = [
     category: "face",
     newArrival: true,
     ingredients: "Water, Ascorbic Acid, Ferulic Acid, Vitamin E, Glycerin, Propanediol, Laureth-23, Phenoxyethanol",
-    howToUse: "Apply 3-4 drops to clean face and neck in the morning before sunscreen.",
+    howToUse: "Appliquez 3 à 4 gouttes sur le visage et le cou propres le matin avant l'écran solaire.",
     rating: 4.7,
     stock: 15
   },
   {
     id: 4,
-    name: "Gentle Cleansing Foam",
+    name: "Mousse Nettoyante Douce",
     price: 24.99,
-    description: "Sulfate-free foaming cleanser that effectively removes makeup and impurities without stripping skin's natural moisture.",
+    description: "Nettoyant moussant sans sulfate qui élimine efficacement le maquillage et les impuretés sans priver la peau de son hydratation naturelle.",
     images: [
       "https://i.postimg.cc/qRZfHNkc/clns.webp",
       "https://i.postimg.cc/Rh3kSvFk/clns2.jpg"
@@ -62,15 +62,15 @@ export const products: Product[] = [
     category: "cleansers",
     bestSeller: true,
     ingredients: "Water, Glycerin, Coco-Betaine, Sodium Cocoyl Isethionate, Panthenol, Aloe Vera Extract, Chamomile Extract",
-    howToUse: "Massage onto damp face morning and evening, then rinse thoroughly with water.",
+    howToUse: "Massez sur le visage humide matin et soir, puis rincez abondamment à l'eau.",
     rating: 4.5,
     stock: 30
   },
   {
     id: 5,
-    name: "Nourishing Body Butter",
+    name: "Beurre Corporel Nourrissant",
     price: 28.99,
-    description: "Rich, creamy body butter with shea and cocoa butter for deeply moisturized, soft skin.",
+    description: "Beurre corporel riche et crémeux avec du beurre de karité et de cacao pour une peau profondément hydratée et douce.",
     images: [
       "https://images.pexels.com/photos/6621329/pexels-photo-6621329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "https://images.pexels.com/photos/5797994/pexels-photo-5797994.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -78,30 +78,30 @@ export const products: Product[] = [
     category: "body",
     featured: true,
     ingredients: "Butyrospermum Parkii (Shea) Butter, Theobroma Cacao (Cocoa) Seed Butter, Glycerin, Coconut Oil, Fragrance",
-    howToUse: "Apply to clean, dry skin. Focus on dry areas like elbows, knees, and feet.",
+    howToUse: "Appliquez sur une peau propre et sèche. Concentrez-vous sur les zones sèches comme les coudes, les genoux et les pieds.",
     rating: 4.9,
     stock: 22
   },
   {
     id: 6,
-    name: "Exfoliating Facial Scrub",
+    name: "Gommage Exfoliant Visage",
     price: 27.99,
-    description: "Gentle exfoliating scrub with bamboo particles and fruit enzymes to reveal smoother, brighter skin.",
+    description: "Gommage exfoliant doux avec des particules de bambou et des enzymes de fruits pour révéler une peau plus lisse et lumineuse.",
     images: [
       "https://images.pexels.com/photos/8128069/pexels-photo-8128069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "https://images.pexels.com/photos/5797990/pexels-photo-5797990.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     ],
     category: "face",
     ingredients: "Water, Bamboo Powder, Papaya Enzyme, Glycerin, Jojoba Beads, Aloe Vera, Green Tea Extract",
-    howToUse: "Apply to damp skin and gently massage in circular motions. Use 2-3 times per week.",
+    howToUse: "Appliquez sur une peau humide et massez doucement en mouvements circulaires. Utilisez 2 à 3 fois par semaine.",
     rating: 4.3,
     stock: 28
   },
   {
     id: 7,
-    name: "Refreshing Rose Toner",
+    name: "Toner Rose Rafraîchissant",
     price: 22.99,
-    description: "Alcohol-free rose water toner that hydrates, soothes, and preps skin for better absorption of serums and moisturizers.",
+    description: "Toner à l'eau de rose sans alcool qui hydrate, apaise et prépare la peau pour une meilleure absorption des sérums et crèmes hydratantes.",
     images: [
       "https://i.postimg.cc/SNMBHQH8/fresh.webp",
       "https://i.postimg.cc/YCB57KwP/fresh2.webp"
@@ -109,15 +109,15 @@ export const products: Product[] = [
     category: "face",
     newArrival: true,
     ingredients: "Rosa Damascena Flower Water, Glycerin, Panthenol, Sodium Hyaluronate, Niacinamide, Allantoin",
-    howToUse: "After cleansing, apply to face and neck using a cotton pad or by spritzing directly onto skin.",
+    howToUse: "Après le nettoyage, appliquez sur le visage et le cou à l'aide d'un coton ou en vaporisant directement sur la peau.",
     rating: 4.4,
     stock: 20
   },
   {
     id: 8,
-    name: "Luxurious Bath Oil",
+    name: "Huile de Bain Luxueuse",
     price: 34.99,
-    description: "Aromatic bath oil with lavender and chamomile essential oils for a relaxing, spa-like bathing experience.",
+    description: "Huile de bain aromatique avec des huiles essentielles de lavande et de camomille pour une expérience de bain relaxante, digne d'un spa.",
     images: [
       "https://i.postimg.cc/vmQC1rTL/both-oil.webp",
       "https://i.postimg.cc/DZzVNrKy/bath-oil-product.jpg"
@@ -125,7 +125,7 @@ export const products: Product[] = [
     category: "bath",
     featured: true,
     ingredients: "Sweet Almond Oil, Jojoba Oil, Lavender Essential Oil, Chamomile Essential Oil, Vitamin E",
-    howToUse: "Add 1-2 capfuls to running bath water. Soak for at least 15 minutes for maximum benefits.",
+    howToUse: "Ajoutez 1 à 2 bouchons dans l'eau du bain. Laissez tremper pendant au moins 15 minutes pour un maximum de bienfaits.",
     rating: 4.8,
     stock: 15
   }

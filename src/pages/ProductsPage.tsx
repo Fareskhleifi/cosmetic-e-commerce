@@ -18,12 +18,12 @@ const ProductsPage: React.FC = () => {
   const [filtersVisible, setFiltersVisible] = useState(false);
 
   useEffect(() => {
-    document.title = 'Shop - LUXEBEAUTY';
+    document.title = 'Boutique - LUXEBEAUTY';
     window.scrollTo(0, 0);
     
     let filtered = [...products];
     
-    // Filter by category if specified
+    // Filtrer par catégorie si spécifié
     if (categoryParam) {
       setSelectedCategory(categoryParam);
       filtered = getProductsByCategory(categoryParam);
@@ -33,12 +33,12 @@ const ProductsPage: React.FC = () => {
       filtered = getNewArrivals();
     }
     
-    // Filter by price range
+    // Filtrer par gamme de prix
     filtered = filtered.filter(
       product => product.price >= priceRange[0] && product.price <= priceRange[1]
     );
     
-    // Apply sorting
+    // Appliquer le tri
     if (sortBy === 'price-low-high') {
       filtered.sort((a, b) => a.price - b.price);
     } else if (sortBy === 'price-high-low') {
@@ -70,13 +70,13 @@ const ProductsPage: React.FC = () => {
     <div className="mt-16 pt-8 pb-16">
       <div className="container mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-3xl font-serif mb-2">Shop Our Collection</h1>
+          <h1 className="text-3xl font-serif mb-2">Découvrez Notre Collection</h1>
           <p className="text-gray-600">
-            Discover our premium range of skincare and beauty products.
+            Explorez notre gamme premium de produits de soin et de beauté.
           </p>
         </div>
         
-        {/* Mobile Filters Toggle */}
+        {/* Basculer les filtres sur mobile */}
         <div className="lg:hidden mb-4">
           <button 
             className="w-full flex items-center justify-between bg-white p-4 border rounded-md"
@@ -84,26 +84,26 @@ const ProductsPage: React.FC = () => {
           >
             <span className="flex items-center">
               <Filter size={18} className="mr-2" />
-              Filters
+              Filtres
             </span>
             <ChevronDown size={18} className={`transition-transform ${filtersVisible ? 'rotate-180' : ''}`} />
           </button>
         </div>
         
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filters */}
+          {/* Filtres latéraux */}
           <div className={`lg:w-1/4 ${filtersVisible ? 'block' : 'hidden'} lg:block`}>
             <div className="bg-white p-6 rounded-lg shadow-sm sticky top-24">
-              {/* Categories */}
+              {/* Catégories */}
               <div className="mb-6">
-                <h3 className="text-lg font-medium mb-3">Categories</h3>
+                <h3 className="text-lg font-medium mb-3">Catégories</h3>
                 <ul className="space-y-2">
                   <li>
                     <button 
                       className={`text-left w-full ${selectedCategory === null ? 'text-pink-600 font-medium' : 'text-gray-600'}`}
                       onClick={() => handleCategoryChange(null)}
                     >
-                      All Products
+                      Tous les produits
                     </button>
                   </li>
                   {categories.map(category => (
@@ -119,9 +119,9 @@ const ProductsPage: React.FC = () => {
                 </ul>
               </div>
               
-              {/* Price Range */}
+              {/* Gamme de prix */}
               <div className="mb-6">
-                <h3 className="text-lg font-medium mb-3">Price Range</h3>
+                <h3 className="text-lg font-medium mb-3">Gamme de prix</h3>
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span>{priceRange[0]} DT</span>
@@ -138,7 +138,7 @@ const ProductsPage: React.FC = () => {
                 </div>
               </div>
               
-              {/* Reset Filters */}
+              {/* Réinitialiser les filtres */}
               <button 
                 className="w-full bg-gray-100 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200 transition-colors"
                 onClick={() => {
@@ -147,17 +147,17 @@ const ProductsPage: React.FC = () => {
                   setFilteredProducts(products);
                 }}
               >
-                Reset Filters
+                Réinitialiser les filtres
               </button>
             </div>
           </div>
           
-          {/* Products */}
+          {/* Produits */}
           <div className="lg:w-3/4">
-            {/* Sorting Controls */}
+            {/* Contrôles de tri */}
             <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
               <div className="text-gray-600">
-                Showing {filteredProducts.length} products
+                Affichage de {filteredProducts.length} produits
               </div>
               
               <div className="flex items-center space-x-4">
@@ -166,11 +166,11 @@ const ProductsPage: React.FC = () => {
                   onChange={(e) => setSortBy(e.target.value)}
                   className="border rounded-md p-2 bg-white focus:outline-none focus:ring-2 focus:ring-pink-300"
                 >
-                  <option value="featured">Featured</option>
-                  <option value="price-low-high">Price: Low to High</option>
-                  <option value="price-high-low">Price: High to Low</option>
-                  <option value="name-a-z">Name: A to Z</option>
-                  <option value="name-z-a">Name: Z to A</option>
+                  <option value="featured">En vedette</option>
+                  <option value="price-low-high">Prix : Croissant</option>
+                  <option value="price-high-low">Prix : Décroissant</option>
+                  <option value="name-a-z">Nom : A à Z</option>
+                  <option value="name-z-a">Nom : Z à A</option>
                 </select>
                 
                 <div className="hidden sm:flex space-x-2">
@@ -184,13 +184,13 @@ const ProductsPage: React.FC = () => {
               </div>
             </div>
             
-            {/* Products Grid */}
+            {/* Grille de produits */}
             {filteredProducts.length > 0 ? (
               <ProductGrid products={filteredProducts} />
             ) : (
               <div className="text-center py-12 bg-gray-50 rounded-lg">
-                <h3 className="text-xl font-medium mb-2">No products found</h3>
-                <p className="text-gray-600">Try adjusting your filters to find what you're looking for.</p>
+                <h3 className="text-xl font-medium mb-2">Aucun produit trouvé</h3>
+                <p className="text-gray-600">Essayez d'ajuster vos filtres pour trouver ce que vous cherchez.</p>
               </div>
             )}
           </div>

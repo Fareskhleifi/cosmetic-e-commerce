@@ -10,19 +10,19 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    text: "I've tried countless skincare brands, but LUXEBEAUTY's products have truly transformed my skin. Their Hydrating Face Serum is now a permanent part of my daily routine.",
+    text: "J'ai essayé d'innombrables marques de soins de la peau, mais les produits de LUXEBEAUTY ont vraiment transformé ma peau. Leur Sérum Visage Hydratant fait désormais partie intégrante de ma routine quotidienne.",
     author: "Ahmed Tounsi.",
     image: "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     id: 2,
-    text: "The Anti-Aging Night Cream has made a visible difference in my skin's texture. Fewer wrinkles, more glow - I couldn't be happier with the results!",
+    text: "La Crème de Nuit Anti-Âge a fait une différence visible dans la texture de ma peau. Moins de rides, plus d'éclat - je ne pourrais pas être plus satisfaite des résultats !",
     author: "Sara ali.",
     image: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     id: 3,
-    text: "What sets LUXEBEAUTY apart is their commitment to quality ingredients. My sensitive skin has never looked better since I started using their products.",
+    text: "Ce qui distingue LUXEBEAUTY, c'est leur engagement envers des ingrédients de qualité. Ma peau sensible n'a jamais été aussi belle depuis que j'ai commencé à utiliser leurs produits.",
     author: "Mohamed trabelsi.",
     image: "https://images.pexels.com/photos/774095/pexels-photo-774095.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   }
@@ -33,9 +33,9 @@ const TestimonialSection: React.FC = () => {
     <section className="py-16 bg-pink-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-serif mb-3">What Our Customers Say</h2>
+          <h2 className="text-3xl font-serif mb-3">Ce que disent nos clients</h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            Discover why our customers love LUXEBEAUTY and how our products have transformed their skincare routines.
+            Découvrez pourquoi nos clients aiment LUXEBEAUTY et comment nos produits ont transformé leurs routines de soins de la peau.
           </p>
         </div>
         
